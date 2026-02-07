@@ -5,7 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Bird {
 
-    Texture texture;
+    Texture[] textureArray;
+    int frameCounter;
 
     int x;
     int y;
@@ -23,7 +24,13 @@ public class Bird {
 
         isJumping = false;
 
-        texture = new Texture(GameResources.BIRD_TEXTURE_PATH);
+        textureArray = new Texture[] {
+            new Texture(GameResources.BIRD_TEXTURE_PATH_0),
+            new Texture(GameResources.BIRD_TEXTURE_PATH_1),
+            new Texture(GameResources.BIRD_TEXTURE_PATH_2),
+            new Texture(GameResources.BIRD_TEXTURE_PATH_1),
+        };
+
     }
 
     void jump() {
@@ -46,11 +53,17 @@ public class Bird {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        spriteBatch.draw(texture, x, y, width, height);
+        frameCounter += 1;
+
+        int framePointer = (frameCounter / 10) % textureArray.length;
+
+        spriteBatch.draw(textureArray[framePointer], x, y, width, height);
     }
 
     public void dispose() {
-        texture.dispose();
+        for (Texture texture : textureArray) {
+            texture.dispose();
+        }
     }
 
 }
