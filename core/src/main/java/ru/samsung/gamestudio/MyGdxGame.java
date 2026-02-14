@@ -9,13 +9,27 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MyGdxGame extends ApplicationAdapter {
     private SpriteBatch batch;
     Bird bird;
-    Tube tube;
+
+    Tube[] tubeArray;
+
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        bird = new Bird(100, 100, 200, 150);
-        tube = new Tube(GameSettings.SCREEN_WIDTH);
+        bird = new Bird(100, 100, 100, 75);
+        tubeArray = new Tube[GameSettings.COUNT_OF_TUBES];
+
+        int tubeWidth = 200;
+        int distanceBetweenTubes = (GameSettings.SCREEN_HEIGHT + tubeWidth)
+            / (GameSettings.COUNT_OF_TUBES - 1);
+
+        for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
+            tubeArray[i] = new Tube(
+                GameSettings.SCREEN_WIDTH + distanceBetweenTubes * i,
+                tubeWidth
+            );
+        }
+
     }
 
     @Override
@@ -24,12 +38,20 @@ public class MyGdxGame extends ApplicationAdapter {
         handleInput();
 
         bird.move();
-        tube.move();
+        for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
+            tubeArray[i].move();
+            if(tubeArray[i].isHit(bird)) {
+                System.out.println("Hit tube");
+            }
+        }
+
 
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         batch.begin();
         bird.draw(batch);
-        tube.draw(batch);
+        for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
+            tubeArray[i].draw(batch);
+        }
         batch.end();
 
     }
@@ -44,7 +66,9 @@ public class MyGdxGame extends ApplicationAdapter {
     public void dispose() {
         batch.dispose();
         bird.dispose();
-        tube.dispose();
+        for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
+            tubeArray[i].dispose();
+        }
     }
 
 }

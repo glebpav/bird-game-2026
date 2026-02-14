@@ -17,10 +17,10 @@ public class Tube {
     int height;
 
 
-    public Tube(int x) {
+    public Tube(int x, int width) {
         this.x = x;
+        this.width = width;
         gapY = generateRandomGapY();
-        width = 200;
         height = 700;
 
         textureDownTube = new Texture(GameResources.TUBE_TEXTURE_PATH);
@@ -37,7 +37,7 @@ public class Tube {
     void move() {
         x -= GameSettings.TUBE_SPEED;
 
-        if (x <=  -width) {
+        if (x <= -width) {
             x = GameSettings.SCREEN_WIDTH;
             gapY = generateRandomGapY();
         }
@@ -58,6 +58,22 @@ public class Tube {
             width,
             height
         );
+    }
+
+    boolean isHit(Bird bird) {
+
+        boolean hitTubeByX = bird.x + bird.width >= x && bird.x <= x + width;
+
+        // for down tube
+        if (bird.y <= gapY - GameSettings.TUBE_GAP_HEIGHT / 2 && hitTubeByX){
+            return true;
+        }
+        // upper upper collision
+        if (bird.y + bird.height >= gapY + GameSettings.TUBE_GAP_HEIGHT / 2 && hitTubeByX) {
+            return true;
+        }
+
+        return false;
     }
 
     void dispose() {
