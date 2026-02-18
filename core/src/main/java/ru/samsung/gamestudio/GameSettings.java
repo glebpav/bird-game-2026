@@ -15,4 +15,6 @@ public class GameSettings {
 
     public static int COUNT_OF_TUBES = 3;
 
+    public static int MOVING_BACKGROUND_SPEED = 2;
+
 }

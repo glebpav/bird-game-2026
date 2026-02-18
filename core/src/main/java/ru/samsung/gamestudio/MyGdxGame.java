@@ -12,16 +12,19 @@ public class MyGdxGame extends ApplicationAdapter {
 
     Tube[] tubeArray;
 
+    MovingBackground background;
+
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         bird = new Bird(100, 100, 100, 75);
         tubeArray = new Tube[GameSettings.COUNT_OF_TUBES];
+        background = new MovingBackground(GameResources.GAME_SCREEN_BACKGROUND_TEXTURE_PATH);
 
         int tubeWidth = 200;
-        int distanceBetweenTubes = (GameSettings.SCREEN_HEIGHT + tubeWidth)
-            / (GameSettings.COUNT_OF_TUBES - 1);
+        int distanceBetweenTubes = (GameSettings.SCREEN_WIDTH + tubeWidth)
+            / (GameSettings.COUNT_OF_TUBES);
 
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
             tubeArray[i] = new Tube(
@@ -38,6 +41,8 @@ public class MyGdxGame extends ApplicationAdapter {
         handleInput();
 
         bird.move();
+        background.move();
+
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
             tubeArray[i].move();
             if(tubeArray[i].isHit(bird)) {
@@ -48,6 +53,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         batch.begin();
+        background.draw(batch);
         bird.draw(batch);
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
             tubeArray[i].draw(batch);
@@ -66,6 +72,7 @@ public class MyGdxGame extends ApplicationAdapter {
     public void dispose() {
         batch.dispose();
         bird.dispose();
+        background.dispose();
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
             tubeArray[i].dispose();
         }

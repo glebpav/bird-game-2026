@@ -9,4 +9,6 @@ public class GameResources {
     public static String TUBE_TEXTURE_PATH = "texture/tubes/tube.png";
     public static String FLIPPED_TUBE_TEXTURE_PATH = "texture/tubes/tube_flipped.png";
 
+    public static String GAME_SCREEN_BACKGROUND_TEXTURE_PATH = "texture/backgrounds/game_bg.png";
+
 }
