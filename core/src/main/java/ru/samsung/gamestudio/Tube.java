@@ -16,6 +16,8 @@ public class Tube {
     int width;
     int height;
 
+    boolean haveAddedPoints;
+
 
     public Tube(int x, int width) {
         this.x = x;
@@ -40,6 +42,7 @@ public class Tube {
         if (x <= -width) {
             x = GameSettings.SCREEN_WIDTH;
             gapY = generateRandomGapY();
+            haveAddedPoints = false;
         }
     }
 
@@ -65,7 +68,7 @@ public class Tube {
         boolean hitTubeByX = bird.x + bird.width >= x && bird.x <= x + width;
 
         // for down tube
-        if (bird.y <= gapY - GameSettings.TUBE_GAP_HEIGHT / 2 && hitTubeByX){
+        if (bird.y <= gapY - GameSettings.TUBE_GAP_HEIGHT / 2 && hitTubeByX) {
             return true;
         }
         // upper upper collision
@@ -79,6 +82,15 @@ public class Tube {
     void dispose() {
         textureUpperTube.dispose();
         textureDownTube.dispose();
+    }
+
+    boolean shouldAddPoints(Bird bird) {
+        if ((bird.x > x + width) && !haveAddedPoints) {
+            haveAddedPoints = true;
+            return true;
+        }
+
+        return false;
     }
 
 }

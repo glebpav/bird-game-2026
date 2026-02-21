@@ -2,7 +2,6 @@ package ru.samsung.gamestudio;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -14,6 +13,10 @@ public class MyGdxGame extends ApplicationAdapter {
 
     MovingBackground background;
 
+    TextView pointCounterText;
+
+    int gameScore;
+
 
     @Override
     public void create() {
@@ -21,6 +24,7 @@ public class MyGdxGame extends ApplicationAdapter {
         bird = new Bird(100, 100, 100, 75);
         tubeArray = new Tube[GameSettings.COUNT_OF_TUBES];
         background = new MovingBackground(GameResources.GAME_SCREEN_BACKGROUND_TEXTURE_PATH);
+        pointCounterText = new TextView(30, GameSettings.SCREEN_HEIGHT - 30, 45);
 
         int tubeWidth = 200;
         int distanceBetweenTubes = (GameSettings.SCREEN_WIDTH + tubeWidth)
@@ -32,6 +36,8 @@ public class MyGdxGame extends ApplicationAdapter {
                 tubeWidth
             );
         }
+
+        gameScore = 0;
 
     }
 
@@ -48,6 +54,10 @@ public class MyGdxGame extends ApplicationAdapter {
             if(tubeArray[i].isHit(bird)) {
                 System.out.println("Hit tube");
             }
+
+            if (tubeArray[i].shouldAddPoints(bird)) {
+                gameScore += 1;
+            }
         }
 
 
@@ -58,6 +68,7 @@ public class MyGdxGame extends ApplicationAdapter {
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
             tubeArray[i].draw(batch);
         }
+        pointCounterText.draw(batch, "Count of points: " + gameScore);
         batch.end();
 
     }
@@ -76,6 +87,7 @@ public class MyGdxGame extends ApplicationAdapter {
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
             tubeArray[i].dispose();
         }
+        pointCounterText.dispose();
     }
 
 }
