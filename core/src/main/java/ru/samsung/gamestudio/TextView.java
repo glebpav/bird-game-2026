@@ -38,11 +38,11 @@ public class TextView {
         generator.dispose();
     }
 
-    void draw(SpriteBatch batch, String text) {
+    public void draw(SpriteBatch batch, String text) {
         font.draw(batch, text, x, y);
     }
 
-    void dispose() {
+    public void dispose() {
         font.dispose();
     }
 

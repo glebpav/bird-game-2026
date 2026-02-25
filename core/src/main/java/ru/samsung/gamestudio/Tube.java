@@ -36,7 +36,7 @@ public class Tube {
         return constHeight + random.nextInt(GameSettings.SCREEN_HEIGHT - 2 * constHeight);
     }
 
-    void move() {
+    public void move() {
         x -= GameSettings.TUBE_SPEED;
 
         if (x <= -width) {
@@ -46,7 +46,7 @@ public class Tube {
         }
     }
 
-    void draw(SpriteBatch spriteBatch) {
+    public void draw(SpriteBatch spriteBatch) {
         spriteBatch.draw(
             textureUpperTube,
             x,
@@ -63,7 +63,7 @@ public class Tube {
         );
     }
 
-    boolean isHit(Bird bird) {
+    public boolean isHit(Bird bird) {
 
         boolean hitTubeByX = bird.x + bird.width >= x && bird.x <= x + width;
 
@@ -79,12 +79,12 @@ public class Tube {
         return false;
     }
 
-    void dispose() {
+    public void dispose() {
         textureUpperTube.dispose();
         textureDownTube.dispose();
     }
 
-    boolean shouldAddPoints(Bird bird) {
+    public boolean shouldAddPoints(Bird bird) {
         if ((bird.x > x + width) && !haveAddedPoints) {
             haveAddedPoints = true;
             return true;

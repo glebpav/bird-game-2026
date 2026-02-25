@@ -33,7 +33,7 @@ public class Bird {
 
     }
 
-    void jump() {
+    public void jump() {
         isJumping = true;
         jumpStartY = y;
     }
