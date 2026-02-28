@@ -5,14 +5,21 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import ru.samsung.gamestudio.GameSettings;
 import ru.samsung.gamestudio.MyGdxGame;
+import ru.samsung.gamestudio.componets.TextButton;
 
 public class MenuScreen implements Screen {
 
     MyGdxGame myGdxGame;
 
+    TextButton buttonStart;
+
     public MenuScreen(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
+
+        buttonStart = new TextButton(100, 100, 400, 150, "Start");
+
     }
 
 
@@ -24,10 +31,25 @@ public class MenuScreen implements Screen {
     @Override
     public void render(float delta) {
 
+        handelInput();
+
         ScreenUtils.clear(Color.BLUE);
 
+        myGdxGame.batch.begin();
+        buttonStart.draw(myGdxGame.batch);
+        myGdxGame.batch.end();
+
+    }
+
+    void handelInput() {
+
         if (Gdx.input.justTouched()) {
-            myGdxGame.setScreen(myGdxGame.gameScreen);
+            if (buttonStart.isHit(
+                Gdx.input.getX(),
+                GameSettings.SCREEN_HEIGHT - Gdx.input.getY())
+            ) {
+                myGdxGame.setScreen(myGdxGame.gameScreen);
+            }
         }
 
     }

@@ -1,4 +1,4 @@
-package ru.samsung.gamestudio;
+package ru.samsung.gamestudio.componets;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class TextView {
 
-    BitmapFont font;
+    public BitmapFont font;
 
-    int x;
-    int y;
+    public int x;
+    public int y;
 
     public TextView(int x, int y, int textSize) {
 

@@ -7,9 +7,9 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import ru.samsung.gamestudio.Bird;
 import ru.samsung.gamestudio.GameResources;
 import ru.samsung.gamestudio.GameSettings;
-import ru.samsung.gamestudio.MovingBackground;
+import ru.samsung.gamestudio.componets.MovingBackground;
 import ru.samsung.gamestudio.MyGdxGame;
-import ru.samsung.gamestudio.TextView;
+import ru.samsung.gamestudio.componets.TextView;
 import ru.samsung.gamestudio.Tube;
 
 public class GameScreen implements Screen {

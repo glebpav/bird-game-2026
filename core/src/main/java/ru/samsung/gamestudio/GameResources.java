@@ -11,4 +11,6 @@ public class GameResources {
 
     public static String GAME_SCREEN_BACKGROUND_TEXTURE_PATH = "texture/backgrounds/game_bg.png";
 
+    public static String BUTTON_BACKGROUND_TEXTURE_PATH = "texture/buttons/button_bg.png";
+
 }
