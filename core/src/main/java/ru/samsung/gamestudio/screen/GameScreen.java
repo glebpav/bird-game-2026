@@ -4,13 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-import ru.samsung.gamestudio.Bird;
-import ru.samsung.gamestudio.GameResources;
-import ru.samsung.gamestudio.GameSettings;
-import ru.samsung.gamestudio.componets.MovingBackground;
+import ru.samsung.gamestudio.character.Bird;
+import ru.samsung.gamestudio.common.GameResources;
+import ru.samsung.gamestudio.common.GameSettings;
+import ru.samsung.gamestudio.component.MovingBackground;
 import ru.samsung.gamestudio.MyGdxGame;
-import ru.samsung.gamestudio.componets.TextView;
-import ru.samsung.gamestudio.Tube;
+import ru.samsung.gamestudio.component.TextView;
+import ru.samsung.gamestudio.character.Tube;
 
 public class GameScreen implements Screen {
 
@@ -63,7 +63,7 @@ public class GameScreen implements Screen {
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
             tubeArray[i].move();
             if(tubeArray[i].isHit(bird)) {
-                System.out.println("Hit tube");
+                endGame();
             }
 
             if (tubeArray[i].shouldAddPoints(bird)) {
@@ -88,6 +88,10 @@ public class GameScreen implements Screen {
         if (Gdx.input.justTouched()) {
             bird.jump();
         }
+    }
+
+    private void endGame() {
+        myGdxGame.setScreen(myGdxGame.restartScreen);
     }
 
 

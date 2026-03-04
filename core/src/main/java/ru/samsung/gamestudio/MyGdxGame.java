@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import ru.samsung.gamestudio.screen.GameScreen;
 import ru.samsung.gamestudio.screen.MenuScreen;
+import ru.samsung.gamestudio.screen.RestartScreen;
 
 public class MyGdxGame extends Game {
 
@@ -12,6 +13,7 @@ public class MyGdxGame extends Game {
 
     public GameScreen gameScreen;
     public MenuScreen menuScreen;
+    public RestartScreen restartScreen;
 
 
     @Override
@@ -20,6 +22,7 @@ public class MyGdxGame extends Game {
 
         menuScreen = new MenuScreen(this);
         gameScreen = new GameScreen(this);
+        restartScreen = new RestartScreen(this);
 
         setScreen(menuScreen);
     }

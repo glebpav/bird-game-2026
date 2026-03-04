@@ -3,7 +3,7 @@ package ru.samsung.gamestudio.lwjgl3;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
-import ru.samsung.gamestudio.GameSettings;
+import ru.samsung.gamestudio.common.GameSettings;
 import ru.samsung.gamestudio.MyGdxGame;
 
 /** Launches the desktop (LWJGL3) application. */

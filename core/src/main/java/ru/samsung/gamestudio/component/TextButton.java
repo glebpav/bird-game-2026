@@ -1,11 +1,10 @@
-package ru.samsung.gamestudio.componets;
+package ru.samsung.gamestudio.component;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import ru.samsung.gamestudio.GameResources;
+import ru.samsung.gamestudio.common.GameResources;
 
 public class TextButton {
 

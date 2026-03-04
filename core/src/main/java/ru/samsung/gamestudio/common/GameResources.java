@@ -1,4 +1,4 @@
-package ru.samsung.gamestudio;
+package ru.samsung.gamestudio.common;
 
 public class GameResources {
 
@@ -10,7 +10,9 @@ public class GameResources {
     public static String FLIPPED_TUBE_TEXTURE_PATH = "texture/tubes/tube_flipped.png";
 
     public static String GAME_SCREEN_BACKGROUND_TEXTURE_PATH = "texture/backgrounds/game_bg.png";
+    public static String MENU_SCREEN_BACKGROUND_TEXTURE_PATH = "texture/backgrounds/restart_bg.png";
 
     public static String BUTTON_BACKGROUND_TEXTURE_PATH = "texture/buttons/button_bg.png";
+
 
 }

@@ -1,9 +1,9 @@
-package ru.samsung.gamestudio.componets;
+package ru.samsung.gamestudio.component;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import ru.samsung.gamestudio.GameSettings;
+import ru.samsung.gamestudio.common.GameSettings;
 
 public class MovingBackground {
 
