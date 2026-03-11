@@ -23,6 +23,8 @@ public class GameScreen implements Screen {
     TextView pointCounterText;
 
     int gameScore;
+    int tubeWidth = 200;
+    int distanceBetweenTubes;
 
     MyGdxGame myGdxGame;
 
@@ -34,8 +36,7 @@ public class GameScreen implements Screen {
         background = new MovingBackground(GameResources.GAME_SCREEN_BACKGROUND_TEXTURE_PATH);
         pointCounterText = new TextView(30, GameSettings.SCREEN_HEIGHT - 30, 45);
 
-        int tubeWidth = 200;
-        int distanceBetweenTubes = (GameSettings.SCREEN_WIDTH + tubeWidth)
+        distanceBetweenTubes = (GameSettings.SCREEN_WIDTH + tubeWidth)
             / (GameSettings.COUNT_OF_TUBES);
 
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
@@ -50,6 +51,17 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+
+        bird = new Bird(100, 100, 100, 75);
+
+        for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
+            tubeArray[i] = new Tube(
+                GameSettings.SCREEN_WIDTH + distanceBetweenTubes * i,
+                tubeWidth
+            );
+        }
+
+        gameScore = 0;
 
     }
 
