@@ -14,5 +14,9 @@ public class GameResources {
 
     public static String BUTTON_BACKGROUND_TEXTURE_PATH = "texture/buttons/button_bg.png";
 
+    public static String BACKGROUND_MUSIC_PATH = "sound/background_music.mp3";
+    public static String HIT_SOUND_PATH = "sound/bird_hit_sound.mp3";
+    public static String PRESS_SOUND_PATH = "sound/press_button_sound.mp3";
+
 
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import ru.samsung.gamestudio.common.GameResources;
+import ru.samsung.gamestudio.manager.AudioManager;
 
 public class TextButton {
 
@@ -21,7 +22,11 @@ public class TextButton {
     int textWidth;
     int textHeight;
 
-    public TextButton(int x, int y, int width, int height, String text) {
+    AudioManager audioManager;
+
+    public TextButton(int x, int y, int width, int height, String text, AudioManager audioManager) {
+
+        this.audioManager = audioManager;
 
         this.x = x;
         this.y = y;
@@ -51,7 +56,13 @@ public class TextButton {
     public boolean isHit(int touchX, int touchY) {
         boolean isHitX = touchX > x && touchX < x + buttonWidth;
         boolean isHitY = touchY > y && touchY < y + buttonHeight;
-        return isHitX && isHitY;
+        boolean isHit = isHitX && isHitY;
+
+        if (isHit) {
+            audioManager.pressSound.play();
+        }
+
+        return isHit;
     }
 
     public void dispose() {

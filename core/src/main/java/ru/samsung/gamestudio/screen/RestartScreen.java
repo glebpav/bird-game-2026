@@ -31,15 +31,18 @@ public class RestartScreen implements Screen {
         menuTextButton = new TextButton(
             GameSettings.SCREEN_WIDTH / 2 + padding, 150,
             400, 150,
-            "menu"
+            "menu",
+            myGdxGame.audioManager
         );
         restartTextButton = new TextButton(
             GameSettings.SCREEN_WIDTH / 2 - padding - 400, 150,
             400, 150,
-            "restart"
+            "restart",
+            myGdxGame.audioManager
         );
 
         scoreTextView = new TextView(300, 450, 70);
+
     }
 
     @Override

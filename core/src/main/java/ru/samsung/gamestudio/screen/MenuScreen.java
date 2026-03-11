@@ -26,9 +26,9 @@ public class MenuScreen implements Screen {
     public MenuScreen(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
 
-        buttonStart = new TextButton(100, 500, 400, 150, "Start");
-        buttonSettings = new TextButton(100, 300, 400, 150, "Settings");
-        buttonExit = new TextButton(100, 100, 400, 150, "Exit");
+        buttonStart = new TextButton(100, 500, 400, 150, "Start", myGdxGame.audioManager);
+        buttonSettings = new TextButton(100, 300, 400, 150, "Settings", myGdxGame.audioManager);
+        buttonExit = new TextButton(100, 100, 400, 150, "Exit", myGdxGame.audioManager);
         textViewTitle = new TextView(700, 400, 80);
         movingBackground = new MovingBackground(GameResources.MENU_SCREEN_BACKGROUND_TEXTURE_PATH);
 
