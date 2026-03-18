@@ -32,6 +32,9 @@ public class AudioManager {
         backgroundMusic.setVolume(0.5f);
         backgroundMusic.setLooping(true);
 
+        isSoundOn = MemoryManager.loadIsSoundOn();
+        isMusicOn = MemoryManager.loadIsMusicOn();
+
     }
 
     public void playBackgroundMusicIfOn() {
@@ -58,10 +61,12 @@ public class AudioManager {
 
     public void switchSound() {
         isSoundOn = !isSoundOn;
+        MemoryManager.saveIsSoundOn(isSoundOn);
     }
 
     public void switchMusic() {
         isMusicOn = !isMusicOn;
+        MemoryManager.saveIsMusicOn(isMusicOn);
 
         if (isMusicOn) {
             playBackgroundMusicIfOn();
