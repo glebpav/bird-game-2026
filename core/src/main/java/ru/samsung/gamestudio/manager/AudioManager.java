@@ -8,9 +8,12 @@ import ru.samsung.gamestudio.common.GameResources;
 
 public class AudioManager {
 
-    public Music backgroundMusic;
-    public Sound hitSound;
-    public Sound pressSound;
+    public boolean isSoundOn;
+    public boolean isMusicOn;
+
+    private final Music backgroundMusic;
+    private final Sound hitSound;
+    private final Sound pressSound;
 
     public AudioManager() {
 
@@ -30,5 +33,42 @@ public class AudioManager {
         backgroundMusic.setLooping(true);
 
     }
+
+    public void playBackgroundMusicIfOn() {
+        if (isMusicOn) {
+            backgroundMusic.play();
+        }
+    }
+
+    public void stopBackgroundMusic() {
+        backgroundMusic.stop();
+    }
+
+    public void playHitSoundIfOn() {
+        if (isSoundOn) {
+            hitSound.play();
+        }
+    }
+
+    public void playPressSoundIfOn() {
+        if (isSoundOn) {
+            pressSound.play();
+        }
+    }
+
+    public void switchSound() {
+        isSoundOn = !isSoundOn;
+    }
+
+    public void switchMusic() {
+        isMusicOn = !isMusicOn;
+
+        if (isMusicOn) {
+            playBackgroundMusicIfOn();
+        } else {
+            stopBackgroundMusic();
+        }
+    }
+
 
 }

@@ -74,7 +74,7 @@ public class MenuScreen implements Screen {
             }
 
             if (buttonSettings.isHit(Gdx.input.getX(), transformedTouchY)) {
-                // TODO: implement - setScreen(settingsScreen);
+                myGdxGame.setScreen(myGdxGame.settingsScreen);
             }
 
         }

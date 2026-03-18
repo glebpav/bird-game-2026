@@ -75,7 +75,7 @@ public class GameScreen implements Screen {
         for (int i = 0; i < GameSettings.COUNT_OF_TUBES; i++) {
             tubeArray[i].move();
             if(tubeArray[i].isHit(bird)) {
-                myGdxGame.audioManager.hitSound.play();
+                myGdxGame.audioManager.playHitSoundIfOn();
                 endGame();
             }
 

@@ -59,7 +59,7 @@ public class TextButton {
         boolean isHit = isHitX && isHitY;
 
         if (isHit) {
-            audioManager.pressSound.play();
+            audioManager.playPressSoundIfOn();
         }
 
         return isHit;

@@ -7,6 +7,7 @@ import ru.samsung.gamestudio.manager.AudioManager;
 import ru.samsung.gamestudio.screen.GameScreen;
 import ru.samsung.gamestudio.screen.MenuScreen;
 import ru.samsung.gamestudio.screen.RestartScreen;
+import ru.samsung.gamestudio.screen.SettingsScreen;
 
 public class MyGdxGame extends Game {
 
@@ -15,6 +16,7 @@ public class MyGdxGame extends Game {
     public GameScreen gameScreen;
     public MenuScreen menuScreen;
     public RestartScreen restartScreen;
+    public SettingsScreen settingsScreen;
 
     public AudioManager audioManager;
 
@@ -24,11 +26,12 @@ public class MyGdxGame extends Game {
         batch = new SpriteBatch();
 
         audioManager = new AudioManager();
-        audioManager.backgroundMusic.play();
+        audioManager.playBackgroundMusicIfOn();
 
         menuScreen = new MenuScreen(this);
         gameScreen = new GameScreen(this);
         restartScreen = new RestartScreen(this);
+        settingsScreen = new SettingsScreen(this);
 
         setScreen(menuScreen);
     }
