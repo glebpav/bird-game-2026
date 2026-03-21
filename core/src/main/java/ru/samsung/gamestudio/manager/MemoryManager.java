@@ -26,4 +26,26 @@ public class MemoryManager {
         return preference.getBoolean("isSoundOn", true);
     }
 
+    public static void saveBestResults(Integer[] bestScores) {
+        String savingStr = "";
+
+        for (Integer bestScore : bestScores) {
+            savingStr += bestScore + ";";
+        }
+
+        preference.putString("bestScores", savingStr);
+    }
+
+    public static Integer[] getBestResults() {
+        String gottenStr = preference.getString("bestScores", "0;0;0;0;0;");
+        String[] resultsStr = gottenStr.split(";");
+        Integer[] resultsInt = new Integer[resultsStr.length];
+
+        for (int i = 0; i < resultsStr.length; i++) {
+            resultsInt[i] = Integer.valueOf(resultsStr[i]);
+        }
+
+        return resultsInt;
+    }
+
 }

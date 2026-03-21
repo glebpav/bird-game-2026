@@ -104,6 +104,7 @@ public class GameScreen implements Screen {
     }
 
     private void endGame() {
+        myGdxGame.restartScreen.setPreviousGameScore(gameScore);
         myGdxGame.setScreen(myGdxGame.restartScreen);
     }
 
