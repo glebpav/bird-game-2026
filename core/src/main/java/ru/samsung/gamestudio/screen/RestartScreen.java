@@ -3,6 +3,7 @@ package ru.samsung.gamestudio.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.util.Arrays;
@@ -63,6 +64,8 @@ public class RestartScreen implements Screen {
         movingBackground.move();
 
         ScreenUtils.clear(Color.BLUE);
+        myGdxGame.camera.update();
+        myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);
 
         myGdxGame.batch.begin();
 
@@ -77,8 +80,13 @@ public class RestartScreen implements Screen {
 
     void handleInput() {
         if (Gdx.input.justTouched()) {
-            int touchX = Gdx.input.getX();
-            int touchY = GameSettings.SCREEN_HEIGHT - Gdx.input.getY();
+
+            Vector3 vector = myGdxGame.camera.unproject(
+                new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)
+            );
+
+            int touchX = (int) vector.x;
+            int touchY = (int) vector.y;
 
             if (restartTextButton.isHit(touchX, touchY)) {
                 myGdxGame.setScreen(myGdxGame.gameScreen);

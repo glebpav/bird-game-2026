@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import ru.samsung.gamestudio.MyGdxGame;
@@ -68,6 +69,8 @@ public class SettingsScreen extends ScreenAdapter {
 
         movingBackground.move();
         ScreenUtils.clear(Color.WHITE);
+        myGdxGame.camera.update();
+        myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);
 
         myGdxGame.batch.begin();
         movingBackground.draw(myGdxGame.batch);
@@ -85,8 +88,12 @@ public class SettingsScreen extends ScreenAdapter {
 
         if (Gdx.input.justTouched()) {
 
-            int touchX = Gdx.input.getX();
-            int touchY = GameSettings.SCREEN_HEIGHT - Gdx.input.getY();
+            Vector3 vector = myGdxGame.camera.unproject(
+                new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)
+            );
+
+            int touchX = (int) vector.x;
+            int touchY = (int) vector.y;
 
             if (musicToggle.isHit(touchX, touchY)) {
                 System.out.println("music toggle was touched");

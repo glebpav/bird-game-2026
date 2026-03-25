@@ -84,8 +84,10 @@ public class GameScreen implements Screen {
             }
         }
 
-
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
+        myGdxGame.camera.update();
+        myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);
+
         myGdxGame.batch.begin();
         background.draw(myGdxGame.batch);
         bird.draw(myGdxGame.batch);

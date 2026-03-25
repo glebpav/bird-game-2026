@@ -3,6 +3,7 @@ package ru.samsung.gamestudio.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import ru.samsung.gamestudio.common.GameResources;
@@ -48,6 +49,8 @@ public class MenuScreen implements Screen {
         handelInput();
 
         ScreenUtils.clear(Color.BLUE);
+        myGdxGame.camera.update();
+        myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);
 
         myGdxGame.batch.begin();
         movingBackground.draw(myGdxGame.batch);
@@ -63,17 +66,22 @@ public class MenuScreen implements Screen {
 
         if (Gdx.input.justTouched()) {
 
-            int transformedTouchY = GameSettings.SCREEN_HEIGHT - Gdx.input.getY();
+            Vector3 vector = myGdxGame.camera.unproject(
+                new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0)
+            );
 
-            if (buttonStart.isHit(Gdx.input.getX(), transformedTouchY)) {
+            int touchX = (int) vector.x;
+            int touchY = (int) vector.y;
+
+            if (buttonStart.isHit(touchX, touchY)) {
                 myGdxGame.setScreen(myGdxGame.gameScreen);
             }
 
-            if (buttonExit.isHit(Gdx.input.getX(), transformedTouchY)) {
+            if (buttonExit.isHit(touchX, touchY)) {
                 Gdx.app.exit();
             }
 
-            if (buttonSettings.isHit(Gdx.input.getX(), transformedTouchY)) {
+            if (buttonSettings.isHit(touchX, touchY)) {
                 myGdxGame.setScreen(myGdxGame.settingsScreen);
             }
 
